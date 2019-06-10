@@ -2,10 +2,10 @@ trait Foo[A] {
   def op(x: A): Int
 }
 trait Bar[A] extends Foo[A] {
-  override def op(x: A): Int = 1
+  def op(x: A): Int = 1
 }
 trait Baz[A] extends Foo[A] {
-  override def op(x: A): Int = 2
+  def op(x: A): Int = 2
 }
 trait Qux[A] extends Bar[A] with Baz[A]
 

@@ -104,3 +104,10 @@ class C extends A {
 }
 }
 
+trait Parent {
+  def a(x: Int): Int
+}
+class Child extends Parent {
+  override def a(x: Int): Int = 5 // error: can't override an abstract method
+}
+

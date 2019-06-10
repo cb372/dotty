@@ -413,6 +413,9 @@ object RefChecks {
           overrideError(i"needs to be declared with @alpha(${"\""}${other.erasedName}${"\""}) so that external names match")
         else
           overrideError("cannot have an @alpha annotation since external names would be different")
+      } else if (member.is(Override, butNot = Synthetic) &&
+                 member.extendedOverriddenSymbols.forall(_.is(Deferred))) {
+        overrideError("can't override an abstract method")
       } else {
         checkOverrideDeprecated()
       }
